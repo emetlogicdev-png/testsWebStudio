@@ -7,7 +7,12 @@ class HomePage:
         self.home_link = page.get_by_role("link", name="Home")
         self.projects_link = page.get_by_role("link", name="Projects")
         self.about_us_link = page.get_by_role("link", name="About Us")
-        
+
+        #Follow Us
+        self.youtube_link = page.get_by_role("link", name = "YOUTUBE")
+        self.x_link = page.get_by_role("link", name = "TWITTER")
+        self.instagram_link = page.get_by_role("link", name = "INSTAGRAM")
+        self.tiktok_link = page.get_by_role("link", name = "TIKTOK")     
 
     def navigate(self, url: str):
         self.page.goto(url)
@@ -20,3 +25,15 @@ class HomePage:
 
     def click_about(self):
         self.about_us_link.click()
+
+    def click_youtube(self):
+        self.youtube_link.click()
+
+    def click_x(self):
+        self.x_link.click()
+
+    def click_instagram(self):
+        self.instagram_link.click()
+
+    def click_tiktok(self):
+        self.tiktok_link.click()
