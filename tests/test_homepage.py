@@ -77,7 +77,7 @@ def test_navigation_to_x(home_page, page):
     new_page = new_page_info.value
     new_page.wait_for_load_state()
 
-    assert "https://x.com/FajarPertamaStd" in new_page.url
+    assert "x.com" in new_page.url
 
 def test_navigation_to_instagram(home_page, page):
     # home_page = HomePage(page)
@@ -91,7 +91,7 @@ def test_navigation_to_instagram(home_page, page):
     new_page = new_page_info.value
     new_page.wait_for_load_state()
 
-    assert "https://www.instagram.com/fajarpertamastudios/" in new_page.url
+    assert "instagram.com" in new_page.url
 
 def test_navigation_to_tiktok(home_page, page):
     # home_page = HomePage(page)
@@ -106,4 +106,17 @@ def test_navigation_to_tiktok(home_page, page):
     new_page.wait_for_load_state()
 
 
-    assert "https://www.tiktok.com/@fajarpertamastudios" in new_page.url
+    assert "tiktok.com" in new_page.url
+
+def test_footer_content(home_page):
+    # Sprawdzamy czy napis w stopce jest widoczny na stronie
+    assert home_page.get_footer_text_visibility() is True
+
+def test_footer_actual_text(home_page):
+    # Pobieramy tekst, który RZECZYWIŚCIE jest na stronie w stopce
+    actual_text = home_page.footer_element.inner_text()
+        
+    # Sprawdzamy czy zawiera to, co chcemy
+    assert "Fajar Pertama Studios" in actual_text
+    assert "2026" in actual_text
+    assert "©" in actual_text

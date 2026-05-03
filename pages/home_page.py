@@ -14,6 +14,9 @@ class HomePage:
         self.instagram_link = page.get_by_role("link", name = "INSTAGRAM")
         self.tiktok_link = page.get_by_role("link", name = "TIKTOK")     
 
+        self.footer_text = page.get_by_text("© 2026 Fajar Pertama Studios")
+        self.footer_element = page.locator("footer")
+
     def navigate(self, url: str):
         self.page.goto(url)
 
@@ -37,3 +40,6 @@ class HomePage:
 
     def click_tiktok(self):
         self.tiktok_link.click()
+
+    def get_footer_text_visibility(self):
+        return self.footer_text.is_visible()
