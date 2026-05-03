@@ -1,0 +1,26 @@
+name: Studio Web Tests
+on:
+  push:
+    branches: [ main ]
+  schedule:
+    - cron: '0 8 * * *' # Odpalaj codziennie o 8:00 rano
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4 # Pobiera Twój kod
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          playwright install --with-deps # Instaluje przeglądarki w chmurze
+
+      - name: Run tests
+        run: pytest
