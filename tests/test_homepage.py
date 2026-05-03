@@ -7,6 +7,17 @@ def test_homepage_title(page, page_url):
     # Sprawdzamy czy tytuł strony zawiera nazwę studia
     assert "Fajar Pertama" in page.title()
 
+def test_navigation_to_home(page, page_url):
+    home_page = HomePage(page)
+    home_page.navigate(page_url)
+    
+    # Klikamy w projekty
+    home_page.click_home()
+    
+    # Sprawdzamy czy URL zawiera projects.html
+    # Używamy asercji, żeby potwierdzić, że automat tam dotarł
+    assert "index.html" in page.url
+
 def test_navigation_to_projects(page, page_url):
     home_page = HomePage(page)
     home_page.navigate(page_url)
@@ -17,3 +28,14 @@ def test_navigation_to_projects(page, page_url):
     # Sprawdzamy czy URL zawiera projects.html
     # Używamy asercji, żeby potwierdzić, że automat tam dotarł
     assert "projects.html" in page.url
+
+def test_navigation_to_about(page, page_url):
+    home_page = HomePage(page)
+    home_page.navigate(page_url)
+    
+    # Klikamy w projekty
+    home_page.click_about()
+    
+    # Sprawdzamy czy URL zawiera projects.html
+    # Używamy asercji, żeby potwierdzić, że automat tam dotarł
+    assert "about_us.html" in page.url
