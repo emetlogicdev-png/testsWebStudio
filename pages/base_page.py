@@ -43,3 +43,20 @@ class BasePage:
 
     def get_footer_text_visibility(self):
         return self.footer_text.is_visible()
+    
+    def verify_all_links(self):
+        """
+        Scans all links on the current page and verifies if they return a 200 OK status.
+        """
+        links = self.page.locator("a").all()
+        
+        for link in links:
+            href = link.get_attribute("href")
+            if href:
+                # Resolve relative URLs to absolute ones using the current page's base URL
+                full_url = self.page.evaluate("url => new URL(url, window.location.href).href", href)
+                
+                # Check only web links (ignore mailto:, tel:, etc.)
+                if full_url.startswith("http"):
+                    response = self.page.request.get(full_url)
+                    assert response.ok, f"Link {full_url} is broken! Status: {response.status}"

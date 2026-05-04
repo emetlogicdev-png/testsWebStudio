@@ -120,3 +120,8 @@ def test_footer_actual_text(about_page):
     assert "Fajar Pertama Studios" in actual_text
     assert "2026" in actual_text
     assert "©" in actual_text
+
+def test_no_broken_links_on_aboutpage(about_page):
+
+        """Verify that all links on the aboutpage are functional."""
+        about_page.verify_all_links()

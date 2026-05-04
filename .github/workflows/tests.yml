@@ -2,6 +2,7 @@ name: Studio Web Tests
 on:
   push:
     branches: [ main ]
+  workflow_dispatch:
   schedule:
     - cron: '0 8 * * *' # Odpalaj codziennie o 8:00 rano
 

@@ -120,3 +120,8 @@ def test_footer_actual_text(projects_page):
     assert "Fajar Pertama Studios" in actual_text
     assert "2026" in actual_text
     assert "©" in actual_text
+
+def test_no_broken_links_on_projectspage(projects_page):
+
+        """Verify that all links on the projectspage are functional."""
+        projects_page.verify_all_links()
