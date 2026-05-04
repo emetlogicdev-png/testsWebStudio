@@ -1,51 +1,51 @@
-from pages.home_page import HomePage
+from pages.projects_page import ProjectsPage
 
-def test_homepage_title(home_page):
+def test_homepage_title(projects_page):
     # home_page = HomePage(page)
     # home_page.navigate(page_url)
     
     # Sprawdzamy czy tytuł strony zawiera nazwę studia
-    assert "Fajar Pertama" in home_page.page.title()
+    assert "Fajar Pertama" in projects_page.page.title()
 
-def test_navigation_to_home(home_page):
+def test_navigation_to_home(projects_page):
     # home_page = HomePage(page)
     # home_page.navigate(page_url)
     
     # Klikamy w projekty
-    home_page.click_home()
+    projects_page.click_home()
     
     # Sprawdzamy czy URL zawiera projects.html
     # Używamy asercji, żeby potwierdzić, że automat tam dotarł
-    assert "index.html" in home_page.page.url
+    assert "index.html" in projects_page.page.url
 
-def test_navigation_to_projects(home_page):
+def test_navigation_to_projects(projects_page):
     # home_page = HomePage(page)
     # home_page.navigate(page_url)
     
     # Klikamy w projekty
-    home_page.click_projects()
+    projects_page.click_projects()
     
     # Sprawdzamy czy URL zawiera projects.html
     # Używamy asercji, żeby potwierdzić, że automat tam dotarł
-    assert "projects.html" in home_page.page.url
+    assert "projects.html" in projects_page.page.url
 
-def test_navigation_to_about(home_page):
+def test_navigation_to_about(projects_page):
     # home_page = HomePage(page)
     # home_page.navigate(page_url)
     
     # Klikamy w projekty
-    home_page.click_about()
+    projects_page.click_about()
     
     # Sprawdzamy czy URL zawiera projects.html
     # Używamy asercji, żeby potwierdzić, że automat tam dotarł
-    assert "about_us.html" in home_page.page.url
+    assert "about_us.html" in projects_page.page.url
 
-def test_navigation_to_youtube(home_page, page):
+def test_navigation_to_youtube(projects_page, page):
     # home_page = HomePage(page)
     # home_page.navigate(page_url)
 
     with page.context.expect_page() as new_page_info:
-        home_page.click_youtube()
+        projects_page.click_youtube()
 
     # home_page.click_youtube()
 
@@ -65,12 +65,12 @@ def test_navigation_to_youtube(home_page, page):
 
     assert "youtube.com" in new_page.url
 
-def test_navigation_to_x(home_page, page):
+def test_navigation_to_x(projects_page, page):
     # home_page = HomePage(page)
     # home_page.navigate(page_url)
 
     with page.context.expect_page() as new_page_info:
-        home_page.click_x()
+        projects_page.click_x()
 
     # home_page.click_x()
 
@@ -79,12 +79,12 @@ def test_navigation_to_x(home_page, page):
 
     assert "x.com" in new_page.url
 
-def test_navigation_to_instagram(home_page, page):
+def test_navigation_to_instagram(projects_page, page):
     # home_page = HomePage(page)
     # home_page.navigate(page_url)
 
     with page.context.expect_page() as new_page_info:
-        home_page.click_instagram()
+        projects_page.click_instagram()
 
     # home_page.click_instagram()
 
@@ -93,12 +93,12 @@ def test_navigation_to_instagram(home_page, page):
 
     assert "instagram.com" in new_page.url
 
-def test_navigation_to_tiktok(home_page, page):
+def test_navigation_to_tiktok(projects_page, page):
     # home_page = HomePage(page)
     # home_page.navigate(page_url)
 
     with page.context.expect_page() as new_page_info:
-        home_page.click_tiktok()
+        projects_page.click_tiktok()
 
     # home_page.click_tiktok()
 
@@ -108,13 +108,13 @@ def test_navigation_to_tiktok(home_page, page):
 
     assert "tiktok.com" in new_page.url
 
-def test_footer_content(home_page):
+def test_footer_content(projects_page):
     # Sprawdzamy czy napis w stopce jest widoczny na stronie
-    assert home_page.get_footer_text_visibility() is True
+    assert projects_page.get_footer_text_visibility() is True
 
-def test_footer_actual_text(home_page):
+def test_footer_actual_text(projects_page):
     # Pobieramy tekst, który RZECZYWIŚCIE jest na stronie w stopce
-    actual_text = home_page.footer_element.inner_text()
+    actual_text = projects_page.footer_element.inner_text()
         
     # Sprawdzamy czy zawiera to, co chcemy
     assert "Fajar Pertama Studios" in actual_text
