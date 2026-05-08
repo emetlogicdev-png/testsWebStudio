@@ -63,5 +63,5 @@ class BasePage:
                     if any(domain in full_url for domain in excluded_domains):
                         continue
 
-                        response = self.page.request.get(full_url)
-                        assert response.ok, f"Link {full_url} is broken! Status: {response.status}"
+                    response = self.page.request.get(full_url)
+                    assert response.ok, f"Link {full_url} is broken! Status: {response.status}"
