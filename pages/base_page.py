@@ -49,6 +49,8 @@ class BasePage:
         Scans all links on the current page and verifies if they return a 200 OK status.
         """
         links = self.page.locator("a").all()
+
+        excluded_domains = ["instagram.com", "facebook.com", "x.com", "tiktok.com"]
         
         for link in links:
             href = link.get_attribute("href")
