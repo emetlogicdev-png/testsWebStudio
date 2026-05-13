@@ -125,3 +125,27 @@ def test_no_broken_links_on_homepage(home_page):
 
     """Verify that all links on the homepage are functional."""
     home_page.verify_all_links()
+
+def test_navigation_to_aethelgard(home_page):
+    
+    home_page.click_aethelgard()
+
+    assert "project_aethelgard.html" in home_page.page.url
+
+def test_navigation_to_silence(home_page):
+    
+    home_page.click_silence()
+
+    assert "project_silence.html" in home_page.page.url
+
+def test_navigation_to_mow(home_page):
+    
+    home_page.click_mow()
+
+    assert "project_mow.html" in home_page.page.url
+
+def test_navigation_to_you(home_page):
+    
+    home_page.click_you()
+
+    assert "project_you.html" in home_page.page.url
